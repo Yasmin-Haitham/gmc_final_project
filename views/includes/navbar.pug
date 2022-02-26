@@ -5,15 +5,15 @@ nav(class="navbar navbar-expand-lg navbar-light" style="background-color: #8e399
     //a(class="navbar-brand" href="/")
     a(class="navbar-brand" href="/") 
         img(src="./logo.png" width="100" height="40" alt="fesiness")
-    button(class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation")
+    button(class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="true" aria-label="Toggle navigation")
        span(class="navbar-toggler-icon")
     div(class="collapse navbar-collapse" id="navbarNavAltMarkup")
-      div(class="navbar-nav mr-auto mt-2 mt-lg-0")  
-        li(class="nav-item active")
-            a(class="nav-link active" aria-current="page" href="/") Home
-                if user 
-                    a(class="nav-link" href="/logout") Logout
-                else
-                    a(class="nav-link" href="/register") Register
-                    a(class="nav-link" href="/login") Login
-                a(class="nav-link" href="/add") Add New Product
+      div(class="navbar-nav")
+      
+        a(class="nav-link active" aria-current="page" href="/") Home
+        if user 
+          a(class="nav-link" href="/logout") Logout
+        else
+          a(class="nav-link" href="/signup") Signup
+          a(class="nav-link" href="/login") Login
+        a(class="nav-link" href="/add") Add New Product

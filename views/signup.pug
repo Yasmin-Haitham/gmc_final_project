@@ -1,0 +1,43 @@
+extends ./layout.pug
+block content
+    div.container.p-5(method="POST" action="/signup")
+        form(method="POST" action="/login")
+            div(class="form-group")
+                label(for="exampleFormControlInput1") Full Name        
+                div(class="col")
+                input(type="text" class="form-control" placeholder="First name")
+            
+                div(class="col").p-1
+                input(type="text" class="form-control" placeholder="Last name")
+            
+            div(class="form-group")
+                label(for="exampleFormControlInput2") Username
+                input(type="username" class="form-control" id="userInput" placeholder="name@example.com")
+            
+            div(class="form-group")
+                label(for="exampleInputPassword1") Password
+                input(type="password", class="form-control", id="InputPassword", placeholder="Password")
+
+            div(class="form-group")
+                label(for="exampleFormControlSelect1") Role
+                select(class="form-control" id="exampleFormControlSelect1")
+                    option Regular User 
+                    option Email Subscribed 
+                    option Fesiness User
+                    
+                    
+                
+            
+            //div(class="form-group")
+                label(for="exampleFormControlSelect2") Example multiple select
+                select(multiple class="form-control" id="exampleFormControlSelect2")
+                    option 1
+                    option 2
+                    option 3
+                    option 4
+                    option 5    
+            
+            div(class="form-group")
+                label(for="exampleFormControlTextarea1") Description
+                textarea(class="form-control" id="exampleFormControlTextarea1" rows="3")
+            button(type="submit" class="btn btn-primary d-block mx-auto my-5") Submit

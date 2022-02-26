@@ -3,7 +3,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
+const path = require('path');
 
+require("./config/passport")(passport)
 //start app
 const app = express();
 
@@ -24,8 +26,9 @@ mongoose.connect(
 );
 //passport init
 
-app.use(session({ secret: process.env.SESSION_SECRET }));
+app.use(session({ secret: "secret", resave: true, saveUninitialized: true }));
 app.use(passport.initialize())
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(passport.session())
 
 //body parser middleware
@@ -33,5 +36,5 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //routes
-app.use('/user',userRouter);
+app.use('/',userRouter);
 app.listen(port,()=>{console.log(`this server is up and running on: ${port}`)})

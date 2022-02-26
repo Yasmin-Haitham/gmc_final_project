@@ -1,9 +1,10 @@
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("../schemas/user");
 const bcrypt = require("bcrypt");
+const res = require("express/lib/response");
 
 //implement strategy 
-const Strategy = (passport) =>{
+module.exports=(passport) =>{
     passport.use(new LocalStrategy(
         async(username,password,done)=>{
             /*verify fuction returns cb done where 
