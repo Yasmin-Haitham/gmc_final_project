@@ -5,7 +5,8 @@ const passport = require('passport');
 const session = require('express-session');
 const path = require('path');
 
-require("./config/passport")(passport)
+require("./config/passport")(passport);
+require("./config/google-passport")(passport);
 //start app
 const app = express();
 
@@ -35,6 +36,12 @@ app.use(passport.session())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use("/",(req,res,next)=>{
+    res.locals.user=req.user
+    next();
+})
+
 //routes
 app.use('/',userRouter);
+
 app.listen(port,()=>{console.log(`this server is up and running on: ${port}`)})

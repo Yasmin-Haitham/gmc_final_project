@@ -1,26 +1,26 @@
 extends ./layout.pug
 block content
-    div.container.p-5(method="POST" action="/signup")
-        form(method="POST" action="/login")
+    div.container.p-5
+        form(method="POST" action="/signup")
             div(class="form-group")
                 label(for="exampleFormControlInput1") Full Name        
                 div(class="col")
-                input(type="text" class="form-control" placeholder="First name")
+                input(type="text" class="form-control" name="firstName" placeholder="First name")
             
                 div(class="col").p-1
-                input(type="text" class="form-control" placeholder="Last name")
+                input(type="text" class="form-control" name="lastName" placeholder="Last name")
             
             div(class="form-group")
                 label(for="exampleFormControlInput2") Username
-                input(type="username" class="form-control" id="userInput" placeholder="name@example.com")
+                input(type="username" class="form-control" id="userInput" name="username" placeholder="Username")
             
             div(class="form-group")
                 label(for="exampleInputPassword1") Password
-                input(type="password", class="form-control", id="InputPassword", placeholder="Password")
+                input(type="password" class="form-control" id="InputPassword" name="password" placeholder="Password")
 
             div(class="form-group")
                 label(for="exampleFormControlSelect1") Role
-                select(class="form-control" id="exampleFormControlSelect1")
+                select(class="form-control" name="role" id="exampleFormControlSelect1")
                     option Regular User 
                     option Email Subscribed 
                     option Fesiness User
@@ -39,5 +39,5 @@ block content
             
             div(class="form-group")
                 label(for="exampleFormControlTextarea1") Description
-                textarea(class="form-control" id="exampleFormControlTextarea1" rows="3")
+                textarea(class="form-control" name="description" id="exampleFormControlTextarea1" rows="3")
             button(type="submit" class="btn btn-primary d-block mx-auto my-5") Submit

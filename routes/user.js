@@ -40,14 +40,14 @@ router.post("/signup",async(req,res)=>{
             password: body.password,
             role: body.role,
             description:body.description
-        });
+        })
         //after parsing the body and creating a new user before adding to db password must be encrypted
         bcrypt.hash(newUser.password,10,async(err, hash)=>{
             newUser.password = hash;
             const result = await newUser.save().catch((e)=>res.status(500).send(e));
-            res.send(result);
+            res.redirect("/login");
              
-        });
+        })
     }
 
 });
@@ -58,5 +58,11 @@ router.post("/login",(req,res,next)=>{
         failureRedirect: "/login"
     })(req,res,next)
 })
+
+router.get('/oauth/google/redirect',
+  passport.authenticate('google', { failureRedirect: '/login', failureMessage: true }),
+  function(req, res) {
+    res.redirect('/');
+  });
 
 module.exports = router;
