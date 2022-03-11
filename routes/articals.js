@@ -14,8 +14,8 @@ router.get("/articals",async(req,res)=>{
 router.get("/articals/add",(req,res)=>{ res.render("articalAdd")})
 router.get("/artical/edit/:id", async (req,res)=>{ 
     const id = req.params.id
-    const artical = await artical.findById(id);
-    res.render("artical",{artical})})
+    const Artical = await artical.findById(id);
+    res.render("articalEdit",{Artical})})
     
 router.post("/articals/add",(req,res)=>{
     const body = req.body;

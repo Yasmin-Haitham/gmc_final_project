@@ -3,16 +3,21 @@ block content
     div.container.p-5
         form(method="POST" action=`/artical/Edit/${id}`)
             div(class="form-group")
-                label(for="exampleFormControlInput1") Title        
+                label(for="exampleFormControlInput1") Title 
+                br
+                label(for="OldTitle") Article Title: #{Artical.title}        
                 div(class="col")
                 input(type="text" class="form-control" name="Title" placeholder="Enter your title")
             
             div(class="form-group")
                 label(for="exampleInputPassword1") URL
-                input(type="password" class="form-control" id="InputURL" name="url" placeholder="https://www.example.com/")
+                br
+                a(href=`${Artical.InputURL}`) LINK
+                input(type="text" class="form-control" id="InputURL" name="url" placeholder="https://www.example.com/")
 
             div(class="form-group")
                 label(for="exampleFormControlSelect1") Type
+                label(for="oldType") Article Current Type: #{Artical.type} 
                 select(class="form-control" name="type" id="exampleFormControlSelect1")
                     option Start Up 
                     option Financial planning  
@@ -21,5 +26,5 @@ block content
     
             div(class="form-group")
                 label(for="exampleFormControlTextarea1") Description
-                textarea(class="form-control" name="description" id="exampleFormControlTextarea1" rows="3")
+                textarea(class="form-control" name="description" id="exampleFormControlTextarea1" rows="3" placeholder = `${Artical.description}`)
             button(type="submit" class="btn btn-primary d-block mx-auto my-5") Submit
