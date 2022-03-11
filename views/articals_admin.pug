@@ -1,0 +1,18 @@
+extends layout.pug 
+block content 
+        div(style="display: flex; justify-content: flex-end")
+            button(type="button" class="btn btn-primary" style="text-align: center")
+                a(href="/articals/add" style="text-decoration:none; color: white") Add New Task
+        div.row
+             each artical in articals
+                 div.col-6
+                     div.card
+                     div.card-body
+                         h5.card-title #{artical.title}
+                         p.card-text Artical title: #{artical.title} 
+                          .card-text Description: #{artical.description} 
+                          .card-text
+                            a( href =`${artical.InputURL}`) LINK 
+                          .card-text Article Type: #{artical.type}
+                         a(href=`/artical/Edit/${artical.id}` class="btn btn-primary").m-2 Edit
+                         a(href=`/artical/Delete/${artical.id}` class="btn btn-danger ms-2") Delete

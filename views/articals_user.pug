@@ -1,0 +1,14 @@
+extends layout.pug 
+block content 
+        div(style="display: flex; justify-content: flex-end")
+            div.row
+             each artical in articals
+                 div.col-6
+                     div.card
+                     div.card-body
+                         h5.card-title #{artical.title}
+                         p.card-text Artical title: #{artical.title} 
+                          .card-text Description: #{artical.description} 
+                          .card-text
+                            a( href =`${artical.InputURL}`) LINK 
+                          .card-text Article Type: #{artical.type}

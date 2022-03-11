@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
 const path = require('path');
+const methodOverride = require('method-override');
 
 require("./config/passport")(passport);
 require("./config/google-passport")(passport);
@@ -18,6 +19,7 @@ app.set('view engine', 'pug')
 
 //set router
 const userRouter = require('./routes/user');
+const articalRouter = require('./routes/articals');
 
 //connect the database
 mongoose.connect(
@@ -27,14 +29,15 @@ mongoose.connect(
 );
 //passport init
 
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(session({ secret: "secret", resave: true, saveUninitialized: true }));
 app.use(passport.initialize())
-app.use(express.static(path.join(__dirname, 'public')))
 app.use(passport.session())
 
 //body parser middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(methodOverride('_method'))
 
 app.use("/",(req,res,next)=>{
     res.locals.user=req.user
@@ -43,5 +46,6 @@ app.use("/",(req,res,next)=>{
 
 //routes
 app.use('/',userRouter);
+app.use('/',articalRouter);
 
 app.listen(port,()=>{console.log(`this server is up and running on: ${port}`)})

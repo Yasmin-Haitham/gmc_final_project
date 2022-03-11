@@ -1,0 +1,42 @@
+extends ./layout.pug
+block content
+     div.container.p-5
+        form(method="POST" action="/update?_method=PUT")
+                div(class="form-group")
+                    label(for="exampleFormControlInput1") Full Name        
+                    div(class="col")
+                    label(for="exampleFormControlInput1") Your First Name: #{user.firstName}
+                    input(type="text" class="form-control" name="firstName" placeholder="First name" )
+                
+                    div(class="col").p-1
+                    label(for="exampleFormControlInput1") Your Last name: #{user.lastName}
+                    input(type="text" class="form-control" name="lastName" placeholder="Last name")
+                
+                div(class="form-group")
+                    label(for="exampleFormControlInput2") Username 
+                    br
+                    label(for="exampleFormControlInput1") Your Username: #{user.username}
+                    input(type="username" class="form-control" id="userInput" name="username" placeholder="Username")
+                
+                div(class="form-group")
+                    label(for="exampleInputPassword1") Password
+                    br
+                    label(for="exampleFormControlInput1") We can't show you the password but change it if you want ;)
+                    input(type="password" class="form-control" id="InputPassword" name="password" placeholder="Password")
+
+                div(class="form-group")
+                    label(for="exampleFormControlSelect1") Role
+                    br
+                    label(for="exampleFormControlInput1") Your Role: #{user.role}
+                    select(class="form-control" name="role" id="exampleFormControlSelect1")
+                        option(value="Regular") Regular User 
+                        option(value="Email-Subscribed") Email Subscribed 
+                        option(value="Fesiness-User") Fesiness User   
+            
+                
+                div(class="form-group")
+                    label(for="exampleFormControlTextarea1") Description
+                    br
+                    label(for="exampleFormControlInput1") Your Description: #{user.description}
+                    textarea(class="form-control" name="description" id="exampleFormControlTextarea1" rows="3")
+                button(type="submit" class="btn btn-primary d-block mx-auto my-5") Submit

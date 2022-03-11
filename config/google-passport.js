@@ -20,7 +20,8 @@ module.exports = (passport) => {
                 firstName: profile._json.given_name,
                 lastName: profile._json.family_name,                
                 email: profile._json.email,
-                googleId: profile.id});
+                googleId: profile.id,
+                userImage: profile._json.picture});
             const result = await newUser.save()
             done(null, result);
         }

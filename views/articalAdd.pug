@@ -1,0 +1,25 @@
+extends layout.pug
+block content
+    div.container.p-5
+        form(method="POST" action="/articals/add")
+            div(class="form-group")
+                label(for="exampleFormControlInput1") Title        
+                div(class="col")
+                input(type="text" class="form-control" name="title" placeholder="Enter your title")
+            
+            div(class="form-group")
+                label(for="exampleInputPassword1") URL
+                input(type="text" class="form-control"  id="InputURL" name="InputURL" placeholder="https://www.example.com/")
+
+            div(class="form-group")
+                label(for="exampleFormControlSelect1") Type
+                select(class="form-control" name="type" )
+                    option(value="Start Up") Start Up 
+                    option(value="Financial planning") Financial planning  
+                    option(value="Insurance") Insurance
+                    option(value="Loans and funds") Loans and funds 
+    
+            div(class="form-group")
+                label(for="exampleFormControlTextarea1") Description
+                textarea(class="form-control" name="description"  rows="3")
+            button(type="submit" class="btn btn-primary d-block mx-auto my-5") Submit

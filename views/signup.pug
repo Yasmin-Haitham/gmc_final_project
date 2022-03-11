@@ -3,10 +3,11 @@ block content
     div.container.p-5
         form(method="POST" action="/signup")
             div(class="form-group")
-                label(for="exampleFormControlInput1") Full Name        
+                label(for="exampleFormControlInput1") First name        
                 div(class="col")
                 input(type="text" class="form-control" name="firstName" placeholder="First name")
             
+                label Last Name
                 div(class="col").p-1
                 input(type="text" class="form-control" name="lastName" placeholder="Last name")
             
@@ -15,27 +16,19 @@ block content
                 input(type="username" class="form-control" id="userInput" name="username" placeholder="Username")
             
             div(class="form-group")
+                label(for="exampleFormControlInput2") Email
+                input(type="username" class="form-control" id="userInput" name="email" placeholder="Email")
+        
+            div(class="form-group")
                 label(for="exampleInputPassword1") Password
                 input(type="password" class="form-control" id="InputPassword" name="password" placeholder="Password")
 
             div(class="form-group")
                 label(for="exampleFormControlSelect1") Role
                 select(class="form-control" name="role" id="exampleFormControlSelect1")
-                    option Regular User 
-                    option Email Subscribed 
-                    option Fesiness User
-                    
-                    
-                
-            
-            //div(class="form-group")
-                label(for="exampleFormControlSelect2") Example multiple select
-                select(multiple class="form-control" id="exampleFormControlSelect2")
-                    option 1
-                    option 2
-                    option 3
-                    option 4
-                    option 5    
+                    option(value="Regular") Regular User 
+                    option(value="Email-Subscribed") Email Subscribed 
+                    option(value="Fesiness-User") Fesiness User   
             
             div(class="form-group")
                 label(for="exampleFormControlTextarea1") Description
