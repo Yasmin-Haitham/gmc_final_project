@@ -4,10 +4,11 @@ const router = express.Router();
 const passport = require("passport");
 const joi = require("joi");
 const bcrypt = require("bcrypt");
+const artical = require("../schemas/articals")
 
-
-router.get("/",(req,res)=>{
-    res.render("homepage")
+router.get("/",async(req,res)=>{
+    const articals = await artical.find({});
+    res.render("homepage",{articals})
 })
 router.get("/login",(req,res)=>{
     res.render("login")

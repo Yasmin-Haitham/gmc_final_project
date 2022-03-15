@@ -1,6 +1,6 @@
 function authenticate(req, res, next) {
     if (req.user) {
-        next(true);
+        next();
     } else {
         res.redirect("/login");
     }

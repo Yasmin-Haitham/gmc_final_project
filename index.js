@@ -46,6 +46,6 @@ app.use("/",(req,res,next)=>{
 
 //routes
 app.use('/',userRouter);
-app.use('/',articalRouter);
+app.use('/articles',articalRouter);
 
 app.listen(port,()=>{console.log(`this server is up and running on: ${port}`)})

@@ -1,22 +1,23 @@
 extends ./layout.pug
 block content
     div.container.p-5
-        form(method="POST" action=`/artical/Edit/${id}`)
+        form(method="POST" action=`/articles/artical/Edit/${Artical._id}?_method=PUT`)
             div(class="form-group")
                 label(for="exampleFormControlInput1") Title 
                 br
                 label(for="OldTitle") Article Title: #{Artical.title}        
                 div(class="col")
-                input(type="text" class="form-control" name="Title" placeholder="Enter your title")
+                input(type="text" class="form-control" name="title" placeholder="Enter your title")
             
             div(class="form-group")
                 label(for="exampleInputPassword1") URL
                 br
                 a(href=`${Artical.InputURL}`) LINK
-                input(type="text" class="form-control" id="InputURL" name="url" placeholder="https://www.example.com/")
+                input(type="text" class="form-control" id="InputURL" name="InputURL" placeholder="https://www.example.com/")
 
             div(class="form-group")
                 label(for="exampleFormControlSelect1") Type
+                br
                 label(for="oldType") Article Current Type: #{Artical.type} 
                 select(class="form-control" name="type" id="exampleFormControlSelect1")
                     option Start Up 
