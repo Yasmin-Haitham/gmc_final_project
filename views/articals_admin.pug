@@ -4,14 +4,27 @@ block content
             div(style="display: flex; justify-content: space-between").p-1
                 button(type="button" class="btn btn-primary" style="text-align: center")
                     a(href="articles/artical/add" style="text-decoration:none; color: white") Add New Task
-                div.row
-                    select#genre.col.mr-2
-                        option(value="") - -
-                        option(value="Start Up") Start Up 
-                        option(value="Financial planning") Financial planning  
-                        option(value="Insurance") Insurance
-                        option(value="Loans and funds") Loans and funds
-                    button.btn.btn-primary.col(type='submit') Filter
+                form(method="GET" action=`/articles?page=${page+1}&genre=${genre}`)
+                    div.row
+                        select(name = "genre" id="genre").col.mr-2
+                            option(value="") - -
+                            if genre == "Start Up" 
+                                option(value="Start Up", selected) Start Up
+                            else 
+                                option(value="Start Up") Start Up 
+                            if genre == "Financial planning"
+                                option(value="Financial planning", selected) Financial planning
+                            else 
+                                option(value="Financial planning") Financial planning  
+                            if genre == "Insurance"
+                                option(value="Insurance", selected) Insurance
+                            else    
+                                option(value="Insurance") Insurance
+                            if genre == "Loans and funds"
+                                option(value="Loans and funds", selected) Loans and funds
+                            else
+                                option(value="Loans and funds") Loans and funds
+                        button.btn.btn-primary.col(type='submit') Filter
             div.row.p-1
                 each artical in articals
                     div.col-6
@@ -32,10 +45,10 @@ block content
                         each page in Array.from(Array(totalPages).keys())
                             if page + 1 == currentPage
                                 li.page-item.active
-                                    a.page-link(href=`/articles?page=${page + 1}&limit=${articalsPerPage}`) #{page + 1}
+                                    a.page-link(href=`/articles?page=${page + 1}&genre=${genre}`) #{page + 1}
                                     //- #{console.log(currentPage)}
                             else
                                 li.page-item
-                                    a.page-link(href=`/articles?page=${page + 1}&limit=${articalsPerPage}`) #{page + 1}
+                                    a.page-link(href=`/articles?page=${page + 1}&genre=${genre}`) #{page + 1}
                             
                     

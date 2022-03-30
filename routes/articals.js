@@ -6,23 +6,32 @@ const authenticated = require("../middleware/authenticated")
 
 
 
-router.get("/", async(req,res)=>{
-    const{page = 1, limit = 2, genre = ""}= req.query 
-    const articals = (await artical.find().limit(limit).skip(limit*(page-1))).filter(genre);
-    const totalArticals = await artical.count()
+router.get("/",authenticated, async(req,res)=>{
+    const{page = 1, genre = ""}= req.query 
+    let filter = undefined
+    if (genre !=""){
+        filter={type: genre}
+    }else{
+        filter={}
+    }
+    const articals = await artical.find(filter).limit(2).skip(2*(page-1))
+    
+    const totalArticals = await artical.find(filter).count()
     console.log(req.query)
+    console.log(filter)
     
     if ( req.user.role == "ADMIN")
         res.render("articals_admin", { 
             articals,
-            totalPages: Math.ceil(totalArticals / limit),
+            totalPages: Math.ceil(totalArticals / 2),
             currentPage: page,
-            articalsPerPage: limit })
+            genre: genre
+             })
     else
         res.render("articals_user",{ articals,
             totalPages: Math.ceil(totalArticals / limit),
-            currentPage: page,
-            articalsPerPage: limit  })})
+            currentPage: page  })})
+
 router.get("/artical/add",(req,res)=>{ res.render("articalAdd")})
 
 router.get("/artical/Edit/:id", async (req,res)=>{ 

@@ -8,7 +8,7 @@ const schema = new mongoose.Schema({
     description: { type: String },
     email:{ type: String, unique: true, sparse:true},
     googleId: {type:String, unique: true, sparse:true},
-    userImage:{type: String}
+    
 });
 
 module.exports = mongoose.model("user", schema);
